@@ -95,19 +95,12 @@
         <div class="timeline">
             <div class="timeline-container" data-aos="fade-up" data-aos-delay="100">
                 <div class="months">
-                    <div class="month active" data-target="august" onclick="selectMonth(this)">Agustus 2024</div>
                     <div class="month" data-target="september" onclick="selectMonth(this)">September 2024</div>
                     <div class="month" data-target="october" onclick="selectMonth(this)">Oktober 2024</div>
                     <div class="month" data-target="november" onclick="selectMonth(this)">November 2024</div>
                     <div class="month" data-target="december" onclick="selectMonth(this)">Desember 2024</div>
                 </div>
                 <div class="details">
-                    <div id="august" class="active">
-                        <h3 class="details-title">Persiapan dan Sosialisasi</h3>
-                        <p class="details-description">Tim panitia melakukan persiapan dan sosialisasi acara kepada
-                            calon peserta di seluruh Indonesia. Pendaftaran akan dibuka pada akhir Agustus, dan para
-                            peserta dapat mulai mengisi formulir serta mempersiapkan karya mereka.</p>
-                    </div>
                     <div id="september" style="display:none;">
                         <h3 class="details-title">Pendaftaran dan Pengumpulan Karya</h3>
                         <p class="details-description">Pendaftaran resmi dibuka pada awal September. Peserta dapat mulai

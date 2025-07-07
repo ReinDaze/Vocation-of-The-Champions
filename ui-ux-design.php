@@ -1,259 +1,433 @@
-<main>
-    <section class="hero" data-aos="fade-up">
-        <div class="hero-content">
-            <h1 class="text-6xl font-bold">UI/UX Design Competition</h1>
-            <p class="text-2xl mb-4">VOC 2024</p>
-            <div class="space-y-2">
-                <a href="#" class="btn">Daftar Sekarang</a>
-                <a href="#" class="btn">Unduh Rulebook</a>
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI/UX Design</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .red-box {
+            background-color: #E3342F;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .red-box div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .red-box div p {
+            margin: 5px 0;
+        }
+
+        .icon {
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .icon img {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+
+        .content-wrapper {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .left-content {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .right-image {
+            flex: 1;
+        }
+
+        .right-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            flex-basis: 25%;
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .sidebar h2 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            color: #333;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+            border-radius: 5px;
+            background-color: #F7FAFC;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #E3342F;
+            color: #FFF;
+        }
+
+        .pendaftaran {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .pendaftaran button {
+            background-color: #E3342F;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex-basis: 70%;
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .main-content h1 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .main-content p {
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .hidden-content {
+            display: none;
+        }
+
+        .active-content {
+            display: block;
+        }
+
+        #menu-toggle {
+            z-index: 9999;
+        }
+
+
+        /* Guidebook Button */
+        .guidebook-button {
+            display: block;
+            margin: 20px auto;
+            background-color: #E3342F;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 1rem;
+            text-decoration: none;
+        }
+
+        .guidebook-button:hover {
+            background-color: #C12D2B;
+        }
+
+        .sidebar {
+            flex-basis: 25%;
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Sidebar Menu */
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .sidebar ul li a {
+            color: #333;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+            border-radius: 5px;
+            background-color: #F7FAFC;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #E3342F;
+            color: #FFF;
+        }
+
+        .sidebar ul li a.active {
+            background-color: #E3342F;
+            color: white;
+            font-weight: bold;
+        }
+
+        @media (max-width: 425px) {
+            #cp-text{
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<nav class="bg-white shadow-md">
+    <div class="container mx-auto p-4 flex justify-between items-center">
+        <!-- Logo -->
+        <div class="flex items-center">
+            <!-- Logo Image -->
+            <img src="./Asset/voc1.png" alt="Logo" class="h-10 w-10 mr-2">
+            <!-- Text -->
+            <div class="text-2xl font-bold text-red-600">
+                <a href="#">VOC</a>
+            </div>
+        </div>
+        <!-- Menu Items -->
+        <div class="hidden md:flex space-x-4">
+            <a href="index.php" class="text-gray-700 hover:text-red-600">Home</a>
+            <a href="index.php#kategori" class="text-gray-700 hover:text-red-600">Lomba</a>
+            <a href="index.php#timeline" class="text-gray-700 hover:text-red-600">Timeline</a>
+            <a href="index.php#kontak" class="text-gray-700 hover:text-red-600">Kontak</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+            <button id="menu-toggle" class="focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="md:hidden hidden px-4 pb-4">
+    <a href="index.php" class="block text-gray-700 hover:text-red-600 py-2">Home</a>
+    <a href="index.php#kategori" class="block text-gray-700 hover:text-red-600 py-2">Lomba</a>
+    <a href="index.php#timeline" class="block text-gray-700 hover:text-red-600 py-2">Timeline</a>
+    <a href="index.php#kontak" class="block text-gray-700 hover:text-red-600 py-2">Kontak</a>
+</div>
+
+<body class="bg-gray-100">
+    <?php
+    // Data dinamis
+    $durasi_pendaftaran = "31 Agustus 2024 - 12 Oktober 2024";
+    $durasi_program = "16 Oktober 2024 - 23 Oktober 2024";
+    $peserta_lolos = "16 November 2024";
+    ?>
+
+    <div class="container mx-auto p-6">
+        <!-- Main Section -->
+        <div class="bg-white shadow-md rounded-lg p-6 content-wrapper flex flex-col md:flex-row">
+            <div class="left-content order-2 md:order-1 md:w-1/2">
+                <h1 class="text-4xl font-bold mb-6">UI/UX Design</h1>
+                <p class="text-gray-700 mb-4 text-justify">
+                    Lomba UI/UX ini mengajak peserta merancang solusi digital untuk pendidikan tinggi di Indonesia
+                    dengan tema "Inovasi, Kreativitas, dan Pendidikan". Peserta harus mengidentifikasi masalah di
+                    perguruan tinggi dan menciptakan desain inovatif untuk situs web, aplikasi, atau sistem
+                    interaktif yang meningkatkan kualitas pendidikan. Lomba ini juga membuka kesempatan untuk
+                    memperluas jaringan dan menarik perhatian perusahaan di bidang desain.
+                </p>
+                <!-- Guidebook Button -->
+                <a href="Asset/UIUX.pdf" target="_blank" class="guidebook-button">Guidebook Lomba</a>
+            </div>
+
+            <!-- Right Image Section -->
+            <div class="right-image order-1 md:order-2 md:w-1/2 mb-6 md:mb-0">
+                <img src="./Asset/ui-ux.png" alt="Program Image" class="w-full rounded-lg">
+            </div>
+        </div>
+
+
+        <!-- Red Info Box -->
+        <div class="red-box w-full">
+            <div>
+                <div class="icon">
+                    <img src="./Asset/durasi-pendaftaran.png" alt="calendar icon">
+                    <p>Durasi Pendaftaran</p>
+                </div>
+                <p><?php echo $durasi_pendaftaran; ?></p>
+            </div>
+            <div>
+                <div class="icon">
+                    <img src="./Asset/game.png" alt="program icon">
+                    <p>Babak Penyisihan</p>
+                </div>
+                <p><?php echo $durasi_program; ?></p>
+            </div>
+            <div>
+                <div class="icon">
+                    <img src="./Asset/final.png" alt="users icon">
+                    <p>Grand Final</p>
+                </div>
+                <p><?php echo $peserta_lolos; ?> Grand Final</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="container mx-auto flex flex-col md:flex-row gap-5 mt-10">
+        <!-- Sidebar Section -->
+        <div class="sidebar flex-none w-full md:w-1/4 bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-lg font-semibold mb-4">Menu Program</h2>
+            <ul>
+                <li><a href="#detail-program" onclick="showContent('detail-program', this); return false;"
+                        class="block py-2">Detail
+                        Lomba</a></li>
+                <li><a href="#persyaratan" onclick="showContent('persyaratan', this); return false;"
+                        class="block py-2">Persyaratan
+                        Peserta</a></li>
+                <li><a href="#cp" onclick="showContent('cp', this); return false;"
+                        class="block py-2">Contact Person</a></li>
+            </ul>
+
+            <div class="pendaftaran mt-6">
+                <a href="http://uns.id/PENDAFTARANUIUX2024" target="_blank">
+                    <button class="bg-red-600 text-white py-2 px-4 rounded-lg w-full">Pendaftaran UI/UX</button>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Content Section -->
+        <div class="main-content flex-1 bg-white p-6 rounded-lg shadow-md">
+            <div id="detail-program" class="active-content">
+                <h1 class="text-2xl font-bold mb-4">Detail Lomba</h1>
+                <ol class="list-decimal pl-5">
+                    <li>Peserta hanya diperbolehkan mengambil satu platform (web atau mobile) untuk dijadikan sebagai
+                        studi kasus.</li>
+                    <li>Karya yang diusulkan merupakan karya orisinil peserta dan belum pernah diikutsertakan dalam
+                        kompetisi sejenis serta belum pernah dipublikasikan dalam bentuk apapun.</li>
+                    <li>Karya tidak boleh mengandung unsur pornografi, SARA, sadisme atau hal-hal yang bersifat
+                        merendahkan atau melecehkan pihak lain.</li>
+                    <li>Karya dibatasi untuk pengguna software berbasis mobile application.</li>
+                    <li>Karya harus sesuai dengan tema "Innovation, Creativity, and Education: Designing Digital
+                        Solutions for Higher Education in Indonesia".</li>
+                    <li>Karya yang diterima adalah karya yang dikirimkan sesuai dengan batas waktu yang telah
+                        ditentukan.</li>
+                    <li>Penilaian dilakukan oleh dewan juri yang telah ditetapkan oleh panitia.</li>
+                    <li>Dewan Juri adalah pihak yang memiliki wewenang memberikan penilaian sesuai dengan kriteria yang
+                        telah ditetapkan.</li>
+                    <li>Penilaian dari dewan juri bersifat mutlak dan tidak dapat diganggu gugat.</li>
+                    <li>Pemenang perlombaan merupakan tim dengan nilai tertinggi dari semua aspek penilaian yang telah
+                        ditetapkan oleh panitia. Keputusan juri tidak dapat diganggu gugat.</li>
+                </ol>
+            </div>
+
+            <div id="persyaratan" class="hidden-content">
+                <h1 class="text-2xl font-bold mb-4">Persyaratan Peserta</h1>
+                <ol class="list-decimal pl-5">
+                    <li>Peserta merupakan seorang mahasiswa/i aktif program Diploma (D1-D4) dari Perguruan Tinggi
+                        Negeri/Swasta yang dibuktikan dengan Kartu Tanda Mahasiswa (KTM).</li>
+                    <li>Peserta dikenakan biaya pendaftaran.</li>
+                    <li>Perlombaan bersifat tim dengan minimal anggota 2 orang dan maksimal 5 orang dari institusi atau
+                        perguruan tinggi yang sama. Selain itu, diperbolehkan untuk lintas program studi bagi
+                        mahasiswa/i perguruan tinggi.</li>
+                    <li>Setiap peserta hanya diperbolehkan mengirimkan satu file karya terbaik.</li>
+                    <li>Peserta hanya boleh mendaftar pada satu tim yang mengikuti lomba.</li>
+                    <li>Peserta bersedia mengikuti seluruh rangkaian kegiatan yang telah dijadwalkan oleh panitia.</li>
+                    <li>Peserta yang tidak memenuhi persyaratan dinyatakan gugur.</li>
+                </ol>
+            </div>
+            <div id="cp" class="hidden-content">
+            <h2 id="cp-text" class="text-2xl font-bold mb-4">Contact Person</h2>
+                <ol class="list-decimal pl-5">
+                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-4"
+                    onclick="window.open('https://wa.me/+62895392891287', '_blank')">Contact Person 1 (Naufal Tsaqif)</button>
+                    <br>
+                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                    onclick="window.open('https://wa.me/+6289681797587', '_blank')">Contact Person 2 (Maulia)</button>
+                </ol>
             </div>
         </div>
     </section>
 
-    <section id="deskripsi">
-        <div class="section-title">
-            <h2 class="highlighted" data-aos="fade-in">Deskripsi Lomba</h2>
-        </div>
-        <p class="section-content" data-aos="fade-in" data-aos-delay="100">
-            Dalam lomba UI/UX ini, para peserta ditantang untuk merancang antarmuka pengguna
-            (UI) dan pengalaman pengguna (UX) dengan tema "<span class="highlight">Innovation,
-                Creativity, and Education: Designing Digital Solutions for Higher Education in
-                Indonesia</span>".Peserta diharapkan dapat mengidentifikasi masalah dan tantangan yang dihadapioleh perguruan tinggi di Indonesia dan memberikan solusi melalui perancangansitus web, aplikasi mobile, atau sistem interaktif lainnya.
-        </p>
-        <p class="section-content" data-aos="fade-in" data-aos-delay="200">
-            Tujuannya adalah untuk menciptakan platform digital yang inovatif dan kreatif
-            yang dapat membantu meningkatkan kualitas pendidikan tinggi di Indonesia. Para
-            peserta perlu mempertimbangkan kebutuhan dan kegunaan pengguna, serta
-            memanfaatkan kreativitas mereka untuk menghasilkan desain UI/UX yang unik,
-            variatif, dan menarik.
-        </p>
-        <p class="section-content" data-aos="fade-in" data-aos-delay="300">
-            Lomba ini bertujuan untuk mengajak para sinergis muda berkolaborasi dalam tim,
-            mengasah kemampuan desain mereka, dan menciptakan solusi digital yang berdampak
-            positif bagi dunia pendidikan tinggi di Indonesia. Selain itu, kompetisi ini
-            juga menjadi ajang untuk memperluas jaringan para desainer UI/UX, sehingga
-            mereka dapat menarik perhatian perusahaan atau organisasi yang mencari talenta
-            berbakat di bidang ini.
-        </p>
-    </section>
 
-    <section id="tema-lomba">
-        <div class="section-title">
-            <h2 class="highlighted" data-aos="fade-in">Tema Lomba</h2>
-        </div>
-        <p class="section-content" data-aos="fade-in" data-aos-delay="100">
-            "<span class="highlight">Innovation, Creativity, and Education: Designing
-                Digital Solutions for Higher Education in Indonesia</span>"
-        </p>
-    </section>
+    </div>
 
-    <section id="ketentuan-peserta">
-        <div class="section-title">
-            <h2 class="highlighted" data-aos="fade-in">Ketentuan Peserta</h2>
-        </div>
-        <ul class="section-content" data-aos="fade-in" data-aos-delay="100">
-            <li>Peserta merupakan seorang mahasiswa/i aktif program Diploma (D1-D4) dari
-                Perguruan Tinggi Negeri/Swasta yang dibuktikan dengan Kartu Tanda Mahasiswa
-                (KTM).</li>
-            <li>Peserta dikenakan biaya pendaftaran.</li>
-            <li>Perlombaan bersifat tim dengan minimal anggota 2 orang dan maksimal 5 orang
-                dari institusi atau perguruan tinggi yang sama. Selain itu, diperbolehkan untuk
-                lintas program studi bagi mahasiswa/i perguruan tinggi.</li>
-            <li>Setiap peserta hanya diperbolehkan mengirimkan satu file karya terbaik.</li>
-            <li>Peserta hanya diperbolehkan berada dalam satu tim UI/UX.</li>
-            <li>Peserta bersedia mengikuti seluruh rangkaian kegiatan yang telah dijadwalkan
-                oleh panitia.</li>
-            <li>Peserta yang tidak memenuhi persyaratan dinyatakan gugur.</li>
-        </ul>
-    </section>
+    <script>
+        // Fungsi untuk menampilkan konten sesuai menu yang diklik
+        function showContent(contentId, element) {
+            // Sembunyikan semua bagian konten
+            var contents = document.querySelectorAll('.main-content > div');
+            contents.forEach(function (content) {
+                content.classList.add('hidden-content');
+                content.classList.remove('active-content');
+            });
 
-    <section id="ketentuan-lomba">
-        <div class="section-title">
-            <h2 class="highlighted" data-aos="fade-in">Ketentuan Lomba</h2>
-        </div>
-        <ul class="section-content" data-aos="fade-in" data-aos-delay="100">
-            <li>Setiap peserta hanya diperbolehkan mengambil satu platform (web atau mobile)
-                untuk dijadikan sebagai studi kasus.</li>
-            <li>Karya yang diusulkan merupakan karya orisinil peserta dan belum pernah
-                diikutsertakan dalam kompetisi sejenis serta belum pernah dipublikasikan dalam
-                bentuk apapun.</li>
-            <li>Karya tidak boleh mengandung unsur pornografi, SARA, sadisme atau hal-hal
-                yang bersifat merendahkan atau melecehkan pihak lain.</li>
-            <li>Karya dibatasi untuk pengguna software berbasis mobile application.</li>
-            <li>Karya harus sesuai dengan tema yaitu "Innovation, Creativity, and Education:
-                Designing Digital Solutions for Higher Education in Indonesia".</li>
-            <li>Karya yang diterima adalah karya yang dikirimkan sesuai dengan batas waktu
-                yang telah ditentukan.</li>
-            <li>Penilaian dilakukan oleh dewan juri yang telah ditetapkan oleh panitia.</li>
-            <li>Dewan Juri adalah pihak yang memiliki wewenang memberikan penilaian sesuai
-                dengan kriteria yang telah ditetapkan.</li>
-            <li>Penilaian dari dewan juri bersifat mutlak dan tidak dapat diganggu gugat.</li>
-            <li>Pemenang perlombaan merupakan tim dengan nilai tertinggi dari semua aspek
-                penilaian yang telah ditetapkan oleh panitia. Keputusan juri tidak dapat
-                diganggu gugat.</li>
-        </ul>
-    </section>
+            // Tampilkan konten yang dipilih
+            var activeContent = document.getElementById(contentId);
+            activeContent.classList.remove('hidden-content');
+            activeContent.classList.add('active-content');
 
-    <section id="alur-pendaftaran">
-        <div class="section-title">
-            <h2 class="highlighted" data-aos="fade-in">Alur Pendaftaran</h2>
-        </div>
-        <ul class="section-content" data-aos="fade-in" data-aos-delay="100">
-            <li>Peserta membaca buku panduan UI/UX Design VOC 2024.</li>
-            <li>Peserta melakukan pembayaran sebesar:
-                <ul>
-                    <li>Gelombang 1 : Rp 60.000 / Tim</li>
-                    <li>Gelombang 2 : Rp 75.000 / Tim</li>
-                </ul>
-                Pembayaran dapat dilakukan melalui transfer ke rekening:
-                <ul>
-                    <li>Bank: Bank Rakyat Indonesia (BRI)</li>
-                    <li>No rekening: 3508 0104 3690 538</li>
-                    <li>Atas nama: Avrianto Rico Ramadhan</li>
-                </ul>
-            </li>
-            <li>Setiap tim wajib mendaftar pada link form berikut:
-                <ul>
-                    <li>
-                        <a href="#">Link Form Pendaftaran</a>
-                    </li>
-                </ul>
-            </li>
-            <li>Upload formulir pada form pendaftaran dalam bentuk PDF dengan nama file
-                (Formulir_NamaTim).</li>
-            <li>Upload scan Kartu Tanda Mahasiswa (KTM) seluruh anggota tim pada form
-                pendaftaran dalam bentuk PDF dengan format nama file (NamaTim_NamaInstasi).</li>
-            <li>Upload bukti pembayaran pada form pendaftaran, dalam bentuk PDF dengan
-                format nama file (BuktiPembayaran_NamaTim).</li>
-            <li>Setelah peserta melakukan pembayaran biaya pendaftaran, peserta wajib
-                mengirim pesan konfirmasi kepada Contact Person:
-                <ul>
-                    <li>
-                        <a href="https://wa.me/+62895392891287">Naufal Tsaqif</a>
-                    </li>
-                    <li>
-                        <a href="https://wa.me/+6289681797587">Maulia</a>
-                    </li>
-                </ul>
-            </li>
-            <li>Setelah melakukan pendaftaran, para peserta dapat mengumpulkan karya pada
-                waktu yang telah ditentukan melalui link form berikut:
-                <ul>
-                    <li>
-                        <a href="#">Link Pengumpulan Karya</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </section>
+            // Hapus kelas aktif dari semua tautan di sidebar
+            var links = document.querySelectorAll('.sidebar ul li a');
+            links.forEach(function (link) {
+                link.classList.remove('active');
+            });
 
-    <section id="ketentuan-babak-penyisihan">
-        <div class="section-title">
-            <h2 class="highlighted" data-aos="fade-in">Ketentuan Babak Penyisihan</h2>
-        </div>
-        <ol class="section-content" data-aos="fade-in" data-aos-delay="100">
-            <li>
-                Peserta wajib mengupload file studi kasus dengan struktur sebagai berikut:
-                <ul>
-                    <li>Latar Belakang Masalah</li>
-                    <li>Tujuan yang dicapai</li>
-                    <li>Metode Pencapaian</li>
-                    <li>Analisis desain sistem UI yang meliputi:
-                        <ul>
-                            <li>Target Pengguna</li>
-                            <li>Batasan Sistem</li>
-                            <li>Platform yang digunakan</li>
-                            <li>Skenario penggunaan rancangan sistem UI</li>
-                            <li>Navigasi cara penggunaan sistem UI</li>
-                            <li>Arsitektur Informasi: Menguraikan struktur rancangan agar dapat menyusun
-                                informasi dengan tepat</li>
-                            <li>Wireframe</li>
-                            <li>Visualisasi Target</li>
-                        </ul>
-                    </li>
-                    <li>Kesimpulan</li>
-                    <li>Daftar Pustaka</li>
-                    <li>Lampiran (jika ada dan diperlukan)</li>
-                </ul>
-            </li>
-            <li>
-                File studi kasus harus menggunakan format berikut:
-                <ul>
-                    <li>Ukuran kertas: A4</li>
-                    <li>Margin: 2.5 cm (semua sisi)</li>
-                    <li>Spacing: 1.5</li>
-                    <li>Font: Times New Roman</li>
-                    <li>Ukuran Font: 12 pt</li>
-                    <li>Ekstensi: PDF</li>
-                </ul>
-            </li>
-            <li>Tim juri akan melakukan penilaian terhadap proposal dan file prototype serta
-                akan mengumumkan 3 tim sebagai finalis.</li>
-            <li>Tim peserta yang melanggar ketentuan di atas akan dinyatakan gugur.</li>
-        </ol>
-    </section>
+            // Tambahkan kelas aktif ke tautan yang diklik
+            element.classList.add('active');
+        }
 
-    <section id="ketentuan-babak-final">
-        <div class="section-title">
-            <h2 class="highlighted" data-aos="fade-in">Ketentuan Babak Final</h2>
-        </div>
-        <ol class="section-content" data-aos="fade-in" data-aos-delay="100">
-            <li>Tim finalis yang lolos ke babak final akan diumumkan melalui Instagram
-                @voc_2024 dan akan diberi pemberitahuan oleh narahubung melalui WhatsApp.</li>
-            <li>Tim finalis, baik ketua tim maupun perwakilan anggota tim, wajib mengikuti
-                Technical Meeting secara daring melalui Zoom pada tanggal 29 Oktober 2024.
-                Informasi lebih lanjut akan diberikan kemudian.</li>
-            <li>Babak Final akan dilaksanakan secara offline di Perpustakaan UNS, Lantai 7.</li>
-            <li>Waktu presentasi terdiri dari 10 menit untuk presentasi dan 20 menit untuk
-                sesi tanya jawab.</li>
-            <li>Presentasi boleh menggunakan PowerPoint, maupun file prototype yang dikirim
-                paling lambat tanggal 15 November 2024, pukul 20:00 WIB.</li>
-            <li>Tim juri akan menilai dan mengumumkan 3 tim yang akan menjadi juara.</li>
-            <li>Pada saat presentasi final, peserta diperkenankan untuk berpakaian rapi dan
-                sopan (almamater kampus).</li>
-            <li>Peserta yang tidak hadir pada saat presentasi final dianggap gugur.</li>
-            <li>Keputusan juri tidak dapat diganggu gugat.</li>
-        </ol>
-    </section>
+        // Event listener untuk tombol menu pada mobile
+        document.getElementById('menu-toggle').addEventListener('click', function () {
+            var mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
 
-    <section id="hadiah">
-        <div class="section-title">
-            <h2 class="highlighted" data-aos="fade-in">Hadiah</h2>
-        </div>
-        <ul class="section-content" data-aos="fade-in" data-aos-delay="100">
-            <li>Juara I: Rp 2.000.000,- + E-Sertifikat</li>
-            <li>Juara II: Rp 1.500.000,- + E-Sertifikat</li>
-            <li>Juara III: Rp 1.000.000,- + E-Sertifikat</li>
-            <li>Semua Peserta: E-Sertifikat</li>
-        </ul>
-    </section>
+</body>
 
-    <section id="info-lomba">
-        <div class="section-title">
-            <h2 class="highlighted" data-aos="fade-in">INFO LOMBA UI/UX DESIGN VOC 2024</h2>
-        </div>
-        <ul class="section-content" data-aos="fade-in" data-aos-delay="100">
-            <li>Media:
-                <ul>
-                    <li>Instagram:
-                        <a href="https://www.instagram.com/voc_2024" target="_blank">@voc_2024</a>
-                    </li>
-                    <li>Email:
-                        <a href="mailto:vocationofthechampions@gmail.com">vocationofthechampions@gmail.com</a>
-                    </li>
-                </ul>
-            </li>
-            <li>Narahubung (CP):
-                <ul>
-                    <li>
-                        <a href="https://wa.me/+62895392891287" target="_blank">Naufal Tsaqif</a>
-                    </li>
-                    <li>
-                        <a href="https://wa.me/+6289681797587" target="_blank">Lia</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </section>
-
-</main>
+</html>
